@@ -1,0 +1,9 @@
+{
+  "name": "contact-api",
+  "version": "1.0.0",
+  "description": "Contact form API for Quantum Data Synergy",
+  "main": "contact.js",
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  }
+}

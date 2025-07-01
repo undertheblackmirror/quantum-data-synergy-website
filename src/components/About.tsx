@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Award, Check, Clock, Users } from 'lucide-react';
+import { Award, Check, Clock, Users, Target, MapPin, Briefcase } from 'lucide-react';
 
 const statsItems = [
-  { icon: <Users className="text-blue-600 dark:text-blue-400" />, value: 50, label: 'Happy Clients', suffix: '+' },
-  { icon: <Award className="text-teal-500 dark:text-teal-400" />, value: 95, label: 'Success Rate', suffix: '%' },
-  { icon: <Clock className="text-blue-600 dark:text-blue-400" />, value: 5, label: 'Years Experience', suffix: '+' },
+  { icon: <Users className="text-blue-600 dark:text-blue-400" />, value: 50, label: 'Successful Projects', suffix: '+' },
+  { icon: <Award className="text-teal-500 dark:text-teal-400" />, value: 95, label: 'Client Satisfaction', suffix: '%' },
+  { icon: <Clock className="text-purple-600 dark:text-purple-400" />, value: 5, label: 'Years of Experience', suffix: '+' },
 ];
 
 const AnimatedCounter: React.FC<{ target: number; suffix?: string }> = ({ target, suffix = '' }) => {
@@ -19,7 +19,7 @@ const AnimatedCounter: React.FC<{ target: number; suffix?: string }> = ({ target
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             let startTime: number | null = null;
-            const duration = 2000; // 2 seconds
+            const duration = 2000;
             
             const step = (timestamp: number) => {
               if (!startTime) startTime = timestamp;
@@ -72,57 +72,59 @@ const About: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                About <span className="text-blue-600 dark:text-blue-400">Us</span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-8">
+                About <span className="text-blue-600 dark:text-blue-400">Quantum Data Synergy</span>
               </h2>
               
-              <div className="prose prose-lg dark:prose-invert">
-                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-                  Our team of seasoned professionals brings over 5 years of hands-on experience in technology consulting, AI implementation, and data strategy. We've successfully partnered with startups, NGOs, and corporations across Panama and Latin America to modernize operations and unlock the power of data.
-                </p>
-                
-                <div className="mb-8">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Our Mission</h3>
-                  <p className="text-lg text-gray-700 dark:text-gray-300">
-                    Empower organizations in Panama and beyond with reliable, ethical, and impactful technology solutions.
+              <div className="space-y-6">
+                <div className="p-6 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-blue-900/20 dark:to-teal-900/20 rounded-xl border-l-4 border-blue-500">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                    <Target className="w-6 h-6 text-blue-500 mr-3" />
+                    Our Mission
+                  </h3>
+                  <p className="text-gray-700 dark:text-gray-300 text-lg">
+                    Empower businesses with reliable technology solutions that drive real results.
                   </p>
                 </div>
 
-                <div className="mb-8">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Our Vision</h3>
-                  <p className="text-lg text-gray-700 dark:text-gray-300">
-                    To be Panama's leading force in AI and data innovation by 2030.
+                <div className="p-6 bg-gradient-to-r from-teal-50 to-green-50 dark:from-teal-900/20 dark:to-green-900/20 rounded-xl border-l-4 border-teal-500">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                    <Briefcase className="w-6 h-6 text-teal-500 mr-3" />
+                    Our Approach
+                  </h3>
+                  <p className="text-gray-700 dark:text-gray-300 text-lg">
+                    We understand your business first, then design solutions that fit your needs.
                   </p>
                 </div>
               </div>
               
-              <div className="space-y-4 mt-8">
+              <div className="grid grid-cols-2 gap-4 mt-8">
                 {[
-                  'Deep understanding of Panama\'s business landscape',
-                  'Cutting-edge technology expertise for Latin American markets',
-                  'Data-driven approach with local context',
-                  'Committed to regional digital transformation'
+                  'Professional service',
+                  'Clear communication',
+                  'Transparent pricing',
+                  'Local presence in Panama'
                 ].map((item, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mt-1">
-                      <Check size={16} className="text-blue-600 dark:text-blue-400" />
+                  <div key={index} className="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <div className="flex-shrink-0 h-5 w-5 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-3">
+                      <Check size={14} className="text-green-600 dark:text-green-400" />
                     </div>
-                    <p className="ml-3 text-gray-600 dark:text-gray-400">{item}</p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm font-medium">{item}</p>
                   </div>
                 ))}
               </div>
             </div>
             
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-2xl p-8 shadow-lg">
+            <div className="bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-700 dark:to-blue-900/30 rounded-2xl p-8 shadow-lg">
               <div className="relative h-64 mb-8 overflow-hidden rounded-xl">
                 <img 
-                  src="https://images.pexels.com/photos/2422294/pexels-photo-2422294.jpeg"
-                  alt="Team collaboration" 
+                  src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg"
+                  alt="Professional team collaboration" 
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                   <p className="text-white p-4 font-medium">
-                    Our team serving Panama's technology needs
+                    Our professional team in Panama City
                   </p>
                 </div>
               </div>
@@ -139,6 +141,13 @@ const About: React.FC = () => {
                     <p className="text-sm text-gray-600 dark:text-gray-400">{item.label}</p>
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-8 p-4 bg-white/50 dark:bg-gray-800/50 rounded-lg text-center">
+                <div className="flex items-center justify-center space-x-2 text-gray-600 dark:text-gray-400">
+                  <MapPin className="w-4 h-4" />
+                  <span className="text-sm">Proudly serving Panama and Latin America</span>
+                </div>
               </div>
             </div>
           </div>
